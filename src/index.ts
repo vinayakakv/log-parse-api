@@ -9,9 +9,7 @@ const upload = multer()
 
 const parser = new LogFileParser({delimiter: " - ", logLevels: ["error", "warn"]})
 
-app.get("/", (req, res) => {
-    res.json({ message: "Hello world" })
-})
+app.use(express.static("web/dist"))
 
 app.post("/api/parse", upload.single("file"), (req, res) => {
     const text = req.file?.buffer.toString() || ""

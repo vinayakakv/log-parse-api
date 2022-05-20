@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello world" })
 })
 
-app.post("/parse", upload.single("file"), (req, res) => {
+app.post("/api/parse", upload.single("file"), (req, res) => {
     const text = req.file?.buffer.toString() || ""
     const parsedText = parser.parse(text)
     res.json({success: true, data: parsedText})
